@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
 from django.core.exceptions import ValidationError
+from django.contrib.auth.forms import AuthenticationForm
 
 from .models import User
 import re
@@ -24,3 +25,9 @@ class CustomUserCreationForm(UserCreationForm):
         
 
         return whatsappDigits
+    
+class CustomAuthenticationForm(AuthenticationForm):
+    error_messages = {
+        'invalid_login': ("A senha ou usuário está incorreto. Por favor verifique essas informações e tente novamente."),
+        'inactive': ("Usuário Inativo."),
+    }

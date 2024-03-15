@@ -8,7 +8,7 @@ from django.urls import reverse
 
 from .models import User
 from .forms import CustomUserCreationForm
-from django.contrib.auth.forms import AuthenticationForm
+from .forms import CustomAuthenticationForm
 
 def register(request):
     if request.method == "POST":
@@ -27,14 +27,14 @@ def register(request):
     
 def login_view(request):
     if request.method == "POST":
-        form = AuthenticationForm(data=request.POST)
+        form = CustomAuthenticationForm(request, data=request.POST)
         if form.is_valid():
             login(request, form.get_user())
             return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "main_app/login.html", {"form": form})
     else:
-        form = AuthenticationForm()
+        form = CustomAuthenticationForm()
         return render(request, "main_app/login.html", {"form": form})
 
 def profile(request, username):
