@@ -7,36 +7,22 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from .models import User
+from .forms import CustomUserCreationForm
 
 def register(request):
     if request.method == "POST":
-        username = request.POST["username"]
-        email = request.POST["email"]
-        whatsapp_number = request.POST["whatsapp"]
-
-        # Ensure password matches confirmation
-        password = request.POST["password"]
-        confirmation = request.POST["confirmation"]
-        if password != confirmation:
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return HttpResponseRedirect(reverse("index"))
+        else:
             return render(request, "main_app/register.html", {
-                "message": "Passwords must match."
+                "form": form
             })
-
-        # Attempt to create new user
-        try:
-            user = User.objects.create_user(username=username, 
-                                            email=email, 
-                                            password=password, 
-                                            whatsapp_number=whatsapp_number)
-            user.save()
-        except IntegrityError:
-            return render(request, "main_app/register.html", {
-                "message": "Username already taken."
-            })
-        login(request, user)
-        return HttpResponseRedirect(reverse("index"))
     else:
-        return render(request, "main_app/register.html")
+        form = CustomUserCreationForm()
+        return render(request, "main_app/register.html", {"form": form})
     
 def login_view(request):
     if request.method == "POST":
