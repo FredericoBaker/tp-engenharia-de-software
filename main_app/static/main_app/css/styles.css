@@ -1,0 +1,104 @@
+.container-template {
+    padding: 20px;
+    margin: 5px 20px 5px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+#error {
+    color: red;
+}
+
+#success {
+    color: green;
+}
+
+.submit-group {
+    display: flex;
+    align-items: center;
+    height: 20px;
+}
+
+.submit-group p {
+    display: none;
+    margin-top: 15px;
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+#post p {
+    margin: 0;
+}
+
+#post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#post-username {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+#post-timestamp {
+    font-size: 12px;
+    color: #3b3b3bD0;
+}
+
+#post-likes {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.like {
+    color: red;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+#post-comment {
+    color: #3b3b3bD0;
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+    margin: 40px 20px 10px 20px;
+}
+
+#follow-button {
+    margin-left: 20px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #FFFFFF;
+}
+
+#user-following-data {
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+#user-following {
+    margin-left: 20px;
+}
+
+.edit-post-form {
+    display: none;
+}
+
+#post-edit {
+    background-color: white;
+    border: none;
+    outline: none;
+    color: #007bff;
+}
+
+#post-edit:hover {
+    text-decoration: underline;
+    border: none;
+}

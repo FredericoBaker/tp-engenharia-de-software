@@ -1,0 +1,21 @@
+{% extends "main_app/layout.html" %}
+{% load static %}
+
+{% block body %}
+    {% if exists %}
+    <div id="user-info">
+        <h3>{{ user.username }}</h3>
+        <p>{{ user.email }}</p>
+        <p>{{ user.whatsapp_number }}</p>
+    </div>
+
+    
+    {% else %}
+    <h3>Esse usuário não existe.</h3>
+    {% endif %}
+
+{% endblock %}
+
+{% block script %}
+<script src=""></script>
+{% endblock %}
