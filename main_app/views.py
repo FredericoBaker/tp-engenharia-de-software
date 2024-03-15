@@ -45,10 +45,13 @@ def profile(request, username):
             "exists": False
         })
     
-    return render(request, "main_app/profile.html",{
-        "exists": True, 
-        "user": user,
-    })
+    if request.user.username == username:
+        return render(request, "main_app/profile.html",{
+            "exists": True, 
+            "user": user,
+        })
+    else:
+        return logout_view(request)
 
 def logout_view(request):
     logout(request)
