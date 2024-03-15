@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
@@ -8,6 +8,7 @@ from django.urls import reverse
 
 from .models import User
 from .forms import CustomUserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 
 def register(request):
     if request.method == "POST":
@@ -26,22 +27,15 @@ def register(request):
     
 def login_view(request):
     if request.method == "POST":
-
-        # Attempt to sign user in
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
-
-        # Check if authentication successful
-        if user is not None:
-            login(request, user)
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            login(request, form.get_user())
             return HttpResponseRedirect(reverse("index"))
         else:
-            return render(request, "main_app/login.html", {
-                "message": "Invalid username and/or password."
-            })
+            return render(request, "main_app/login.html", {"form": form})
     else:
-        return render(request, "main_app/login.html")
+        form = AuthenticationForm()
+        return render(request, "main_app/login.html", {"form": form})
 
 def profile(request, username):
     try:
