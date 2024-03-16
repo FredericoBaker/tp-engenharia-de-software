@@ -1,14 +1,17 @@
 from django.contrib.auth import login, logout
-from django.contrib.auth.decorators import login_required
-from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.db import models
+from django.http import HttpResponseRedirect
 
 from django.shortcuts import render
 from django.urls import reverse
 
 from .models import User
+from .models import Medication
 from .forms import CustomUserCreationForm
 from .forms import CustomAuthenticationForm
+from datetime import datetime, timedelta
+from django.utils import timezone
+
 
 def register(request):
     if request.method == "POST":
@@ -60,8 +63,17 @@ def logout_view(request):
 def index(request):
     # If user is not logged in -> Redirects to login page
     if request.user.is_authenticated:
+        brazilTime = timezone.now() - timedelta(hours=3)
+        userMeds = request.user.medications.filter(
+            models.Q(end_date__isnull=True) | models.Q(end_date__gt=brazilTime)
+        )
+        for med in userMeds:
+            med.update_next_dose_datetime()
+
+        userMedsForToday = [med for med in userMeds if med.next_dose_datetime.date() == brazilTime.date()]
+
         return render(request, "main_app/index.html", {
-            
+            'userMedsForToday': userMedsForToday
         })
     else:
         return HttpResponseRedirect(reverse("login"))
