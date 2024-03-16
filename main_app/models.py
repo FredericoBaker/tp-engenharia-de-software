@@ -21,6 +21,7 @@ class Medication(models.Model):
     start_datetime = models.DateTimeField(verbose_name="Start Date and Time")
     end_date = models.DateField(verbose_name="End Date", help_text="Leave blank if the medication does not have an end date.", blank=True, null=True)
     next_dose_datetime = models.DateTimeField(verbose_name="Next Dose Date and Time", blank=True, null=True)
+    observations = models.TextField(verbose_name="Observations", blank=True)
 
     def __str__(self):
         return f"{self.name} for {self.user.username}"
@@ -32,12 +33,12 @@ class Medication(models.Model):
     def update_next_dose_datetime(self):
         brazilTime = timezone.now() - timedelta(hours=3)
         startDateTime = self.start_datetime
-        lastNextDoseDateTime = self.next_dose_datetime
-        timeDeltaSinceStart = brazilTime - startDateTime
-        totalHoursSinceStart = timeDeltaSinceStart.total_seconds() / 3600
-        hoursSinceLastDose = totalHoursSinceStart % self.frequency
-        hoursToNextDose = self.frequency - hoursSinceLastDose
-        nextDoseTime = brazilTime + timedelta(hours=hoursToNextDose)
-        self.next_dose_datetime = nextDoseTime
+        if startDateTime:
+            timeDeltaSinceStart = brazilTime - startDateTime
+            totalHoursSinceStart = timeDeltaSinceStart.total_seconds() / 3600
+            hoursSinceLastDose = totalHoursSinceStart % self.frequency
+            hoursToNextDose = self.frequency - hoursSinceLastDose
+            nextDoseTime = brazilTime + timedelta(hours=hoursToNextDose)
+            self.next_dose_datetime = nextDoseTime
 
-        self.save()
+            self.save()
