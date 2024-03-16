@@ -25,12 +25,14 @@ class Medication(models.Model):
     def __str__(self):
         return f"{self.name} for {self.user.username}"
     
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.update_next_dose_datetime()
+    
     def update_next_dose_datetime(self):
         brazilTime = timezone.now() - timedelta(hours=3)
         startDateTime = self.start_datetime
         lastNextDoseDateTime = self.next_dose_datetime
-        if lastNextDoseDateTime:
-            startDateTime = lastNextDoseDateTime
         timeDeltaSinceStart = brazilTime - startDateTime
         totalHoursSinceStart = timeDeltaSinceStart.total_seconds() / 3600
         hoursSinceLastDose = totalHoursSinceStart % self.frequency

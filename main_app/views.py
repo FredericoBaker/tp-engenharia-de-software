@@ -67,8 +67,6 @@ def index(request):
         userMeds = request.user.medications.filter(
             models.Q(end_date__isnull=True) | models.Q(end_date__gt=brazilTime)
         )
-        for med in userMeds:
-            med.update_next_dose_datetime()
 
         userMedsForToday = [med for med in userMeds if med.next_dose_datetime.date() == brazilTime.date()]
 
