@@ -1,24 +1,74 @@
-{% extends "main_app/layout.html" %}
+{% extends "main_app/layout.html" %} {% load static %} {% block body %}
+<div id="login-form"></div>
+{% endblock %} {% block script %}
 
-{% block body %}
+<!-- MUI core -->
+<script src="https://unpkg.com/@mui/material@latest/umd/material-ui.production.min.js"></script>
+<!-- MUI icons -->
+<script src="https://unpkg.com/@mui/icons-material@latest/umd/material-ui-icons.min.js"></script>
 
-    <h2>Login</h2>
+<script type="text/babel">
+  function Login() {
+    const [name, setName] = React.useState("");
+    const [password, setPassword] = React.useState("");
 
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
+    const HandleName = (e) => {
+      setName(e.target.value);
+    };
 
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+    const HandlePassword = (e) => {
+      setPassword(e.target.value);
+    };
+
+    const HandleSubmit = () => {
+      preventDefault();
+    };
+
+    return (
+      <div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div>Usuário: </div>
+          <input
+            type="text"
+            name="username"
+            value={name}
+            onChange={HandleName}
+            placeholder="Digite o nome"
+            style={{
+              maginRight: "10px",
+            }}
+          />
         </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Senha">
-        </div>
-        <input class="btn btn-primary" type="submit" value="Login">
-    </form>
 
-    Ainda não tem uma conta? <a href="{% url 'register' %}">Cadastre-se aqui.</a>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div>Senha:</div>
+          <input
+            type="text"
+            name="password"
+            onChange={HandlePassword}
+            placeholder="Digite a senha"
+          />
+        </div>
+        <button type="submit" onClick={HandleSubmit}>
+          Entrar
+        </button>
+      </div>
+    );
+  }
+
+  ReactDOM.render(<Login />, document.getElementById("login-form"));
+</script>
 
 {% endblock %}
