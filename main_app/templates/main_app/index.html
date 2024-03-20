@@ -5,6 +5,15 @@
 
 {% block body %}
     
+{% if userMedsForToday %}
+    <ul>
+        {% for med in userMedsForToday %}
+            <li>{{ med.name }}: {{ med.dose }} every {{ med.frequency }} hours | next dose = {{ med.next_dose_datetime }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No medications listed.</p>
+{% endif %}
 
 {% endblock %}
 
