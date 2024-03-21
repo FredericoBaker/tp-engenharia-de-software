@@ -1,13 +1,29 @@
 {% extends "main_app/layout.html" %} {% load static %} {% block body %}
-<div id="login-form"></div>
-{% endblock %} {% block script %}
+<link rel="stylesheet" href="{% static 'main_app/css/login.css' %}" />
 
-<!-- MUI core -->
+<div class="login-container">
+  <form action="{% url 'login' %}" method="post" class="login-form">
+    {% csrf_token %}
+    <div class="form-group">
+      {{ form.username.label_tag }} {{ form.username }}
+      <span class="error">{{ form.username.errors }}</span>
+    </div>
+    <div class="form-group">
+      {{ form.password.label_tag }} {{ form.password }}
+      <span class="error">{{ form.password.errors }}</span>
+    </div>
+    <button type="submit" class="login-button">Entrar</button>
+  </form>
+</div>
+
+{% endblock %}
+
+<!-- MUI core
 <script src="https://unpkg.com/@mui/material@latest/umd/material-ui.production.min.js"></script>
-<!-- MUI icons -->
-<script src="https://unpkg.com/@mui/icons-material@latest/umd/material-ui-icons.min.js"></script>
+MUI icons -->
+<!-- <script src="https://unpkg.com/@mui/icons-material@latest/umd/material-ui-icons.min.js"></script> -->
 
-<script type="text/babel">
+<!-- <script type="text/babel">
   function Login() {
     const [name, setName] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -67,25 +83,4 @@
   }
 
   ReactDOM.render(<Login />, document.getElementById("login-form"));
-</script>
-
-{% endblock %}
-
-<!--
-<form action="{% url 'login' %}" method="post">
-  {% csrf_token %}
-  {{ form.non_field_errors }}
-  <div class="form-group">
-      {{ form.username.label_tag }}
-      {{ form.username }}
-      {{ form.username.errors }}
-  </div>
-  <div class="form-group">
-      {{ form.password.label_tag }}
-      {{ form.password }}
-      {{ form.password.errors }}
-  </div>
-  <button type="submit" onClick={HandleSubmit}>
-    Entrar
-  </button>
--->
+</script> -->
