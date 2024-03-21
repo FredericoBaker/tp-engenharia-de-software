@@ -12,7 +12,7 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
 - **Frederico Dolher Souza Baker** - Papel: [Backend]
 - **Igor** - Papel: [Frontend]
 - **Rubia** - Papel: [Fullstack]
-- **Wallace** - Papel: [Frontend]
+- **Wallace Eduardo Pereira** - Papel: [Frontend]
 
 ## 🛠 Tecnologias
 
