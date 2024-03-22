@@ -14,6 +14,24 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
 - **Rubia** - Papel: [Fullstack]
 - **Wallace Eduardo Pereira** - Papel: [Frontend]
 
+## 👥 Como rodar?
+
+- Instale as dependencias:
+  
+  ```sh
+  $ pip install -r requirements.txt
+  
+- Faça a migração:
+  
+  ```sh
+  python3 manage.py makemigrations
+  python3 manage.py migrate
+  
+- Depois rode o servidor:
+  
+  ```sh
+  python3 manage.py runserver
+
 ## 🛠 Tecnologias
 
 - Python
