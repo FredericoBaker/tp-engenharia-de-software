@@ -1,7 +1,21 @@
 nav {
-  background-color: #c7b1f8;
+  background-color: #8d77be;
 }
 
 .btn a {
   background-color: #3f08b8;
+}
+
+.nav-bar-layout {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+#brand {
+  color: white;
+  font-weight: 600;
 }

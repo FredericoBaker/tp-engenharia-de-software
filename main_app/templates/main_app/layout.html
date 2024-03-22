@@ -1,5 +1,5 @@
 <!-- Esse arquivo é um modelo para todos os outros. Aqui podem ser feitas alterações no cabeçalho entre outras -->
-{% load static %}  {% load livereload_tags%}
+{% load static %} {% load livereload_tags%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,29 +31,32 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="{% url 'index' %}">OW! Remédio</a>
+      <div class="nav-bar-layout">
+        <a class="navbar-brand" id="brand" href="{% url 'index' %}">OW! Remédio</a>
 
-      <div>
-        <ul class="navbar-nav mr-auto">
-          {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'profile' request.user.username %}"
-              ><strong>{{ request.user.username }}</strong></a
-            >
-          </li>
-          {% endif %} {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Sair</a>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-primary" href="{% url 'register' %}">Cadastrar</a>
-          </li>
-          {% endif %}
-        </ul>
+        <div>
+          <ul class="navbar-nav mr-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="{% url 'profile' request.user.username %}"
+                ><strong>{{ request.user.username }}</strong></a
+              >
+            </li>
+            {% endif %} {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Sair</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="btn btn-primary" href="{% url 'register' %}"
+                >Cadastrar</a
+              >
+            </li>
+            {% endif %}
+          </ul>
+        </div>
       </div>
     </nav>
 
