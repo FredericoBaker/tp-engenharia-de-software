@@ -56,56 +56,56 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
 
 ### História #1: Como usuário, eu gostaria de criar um cadastro para mim
 - **Tarefas e responsáveis:**
-  - ☐ Configurar ambiente de desenvolvimento [Responsável: Daniel]
-  - ☐ Criar tela de cadastro [Responsável: Igor]
-    - ☐ Criar campo de email
-    - ☐ Criar campo de senha
-    - ☐ Criar campo de nome de usuário
-    - ☐ Criar campo de número de whatsapp
-    - ☐ Criar campo botão de confirmação
-  - ☐ Criar o modelo no banco de dados [Responsável: Daniel]
-    - ☐ Criar campo de email
-    - ☐ Criar campo de senha
-    - ☐ Criar campo de nome de usuário
-    - ☐ Criar campo de número de whatsapp
-  - ☐ Criar a view da tela de cadastro [Responsável: Daniel]
-  - ☐ Criar endpoint de post para criar o cadastro do usuário [Responsável: Daniel]
+  <checkbox>Configurar ambiente de desenvolvimento [Responsável: Daniel]</checkbox>
+  - [X] Criar tela de cadastro [Responsável: Igor]
+    - [X] Criar campo de email
+    - [ ] Criar campo de senha
+    - [ ] Criar campo de nome de usuário
+    - [ ] Criar campo de número de whatsapp
+    - [ ] Criar campo botão de confirmação
+  - [ ] Criar o modelo no banco de dados [Responsável: Daniel]
+    - [ ] Criar campo de email
+    - [ ] Criar campo de senha
+    - [ ] Criar campo de nome de usuário
+    - [ ] Criar campo de número de whatsapp
+  - [ ] Criar a view da tela de cadastro [Responsável: Daniel]
+  - [ ] Criar endpoint de post para criar o cadastro do usuário [Responsável: Daniel]
 
 ### História #2: Como usuário, eu gostaria de fazer login e logout
 - **Tarefas e responsáveis:**
-  - ☐ Criar tela de login [Responsável: Wallace]
-    - ☐ Criar campo de nome de usuário
-    - ☐ Criar campo de número de whatsapp
-    - ☐ Criar campo botão de logout
-  - ☐ Criar tela de perfil de usuário [Responsável: Wallace]
-    - ☐ Criar campo botão de confirmação  
-  - ☐ Criar a view da tela de cadastro [Responsável: Daniel]
-  - ☐ Criar endpoint de post para login [Responsável: Daniel]
+  - [ ] Criar tela de login [Responsável: Wallace]
+    - [ ] Criar campo de nome de usuário
+    - [ ] Criar campo de número de whatsapp
+    - [ ] Criar campo botão de logout
+  - [ ] Criar tela de perfil de usuário [Responsável: Wallace]
+    - [ ] Criar campo botão de confirmação  
+  - [ ] Criar a view da tela de cadastro [Responsável: Daniel]
+  - [ ] Criar endpoint de post para login [Responsável: Daniel]
 
 ### História #3: Como usuário, eu gostaria de adicionar um remédio
 - **Tarefas e responsáveis:**
-  - ☐ Criar tela de cadastro de remédio [Responsável: Igor]
-    - ☐ Criar campo de nome de remédio
-    - ☐ Criar campo de freqência para tomar remédio
-    - ☐ Criar campo de hora para tomar remédio
-    - ☐ Criar campo de dose para tomar do remédio
-    - ☐ Criar campo de data de início de tratamento com remédio
-    - ☐ Criar campo de data de fim de tratamento com remédio
-    - ☐ Criar campo botão de confirmação
-  - ☐ Criar a modelo de remédio [Responsável: Daniel]
-  - ☐ Criar a view da tela de cadastro de remédio [Responsável: Daniel]
-  - ☐ Criar endpoint de post para cadastro de remédio [Responsável: Daniel]
+  - [ ] Criar tela de cadastro de remédio [Responsável: Igor]
+    - [ ] Criar campo de nome de remédio
+    - [ ] Criar campo de freqência para tomar remédio
+    - [ ] Criar campo de hora para tomar remédio
+    - [ ] Criar campo de dose para tomar do remédio
+    - [ ] Criar campo de data de início de tratamento com remédio
+    - [ ] Criar campo de data de fim de tratamento com remédio
+    - [ ] Criar campo botão de confirmação
+  - [ ] Criar a modelo de remédio [Responsável: Daniel]
+  - [ ] Criar a view da tela de cadastro de remédio [Responsável: Daniel]
+  - [ ] Criar endpoint de post para cadastro de remédio [Responsável: Daniel]
 
 ### História #4: Como usuário, eu gostaria de receber uma notificação de quando devo tomar o remédio
 - **Tarefas e responsáveis:**
-  - ☐ Criar a modelo de notificação de remédio [Responsável: Fred]
-  - ☐ Conectar com API de notificação [Responsável: Fred]
-  - ☐ Criar serviço para monitorar notificações que precisam ser enviadas [Responsável: Fred]
-  - ☐ Criar serviço para enviar notificação [Responsável: Fred]
+  - [ ] Criar a modelo de notificação de remédio [Responsável: Fred]
+  - [ ] Conectar com API de notificação [Responsável: Fred]
+  - [ ] Criar serviço para monitorar notificações que precisam ser enviadas [Responsável: Fred]
+  - [ ] Criar serviço para enviar notificação [Responsável: Fred]
 
 ### História #5: Como usuário, eu gostaria de ver os remédios que tenho para tomar hoje
 - **Tarefas e responsáveis:**
-  - ☐ Criar tela de remédios do dia [Responsável: Rubia]
-  - ☐ Criar a view da tela de remédios diários [Responsável: Rubia]
+  - [ ] Criar tela de remédios do dia [Responsável: Rubia]
+  - [ ] Criar a view da tela de remédios diários [Responsável: Rubia]
 
-☑ -> Símbolo de tarefa concluída
+- [X] -> Símbolo de tarefa concluída
