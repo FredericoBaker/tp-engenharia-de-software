@@ -1,19 +1,24 @@
 {% extends "main_app/layout.html" %} {% load static %} {% block body %}
 <link rel="stylesheet" href="{% static 'main_app/css/login.css' %}" />
 
-<div class="login-container">
-  <form action="{% url 'login' %}" method="post" class="login-form">
-    {% csrf_token %}
-    <div class="form-group">
-      {{ form.username.label_tag }} {{ form.username }}
-      <span class="error">{{ form.username.errors }}</span>
-    </div>
-    <div class="form-group">
-      {{ form.password.label_tag }} {{ form.password }}
-      <span class="error">{{ form.password.errors }}</span>
-    </div>
-    <button type="submit" class="login-button">Entrar</button>
-  </form>
+<div class="general-container">
+  <div class="login-container animated">
+    <form action="{% url 'login' %}" method="post" class="login-form">
+      {% csrf_token %}
+      <h2>Login</h2>
+      <div class="form-group">
+        {{ form.username.label_tag }} {{ form.username }} {% if form.username.errors %}
+        <span class="error">{{ form.username.errors.as_text }}</span>
+        {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form.password.label_tag }} {{ form.password }} {% if form.password.errors %}
+        <span class="error">{{ form.password.errors.as_text }}</span>
+        {% endif %}
+      </div>
+      <button type="submit" class="login-button">Entrar</button>
+    </form>
+  </div>
 </div>
 
 {% endblock %}
