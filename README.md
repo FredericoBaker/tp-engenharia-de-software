@@ -59,10 +59,10 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
   <checkbox>Configurar ambiente de desenvolvimento [Responsável: Daniel]</checkbox>
   - [X] Criar tela de cadastro [Responsável: Igor]
     - [X] Criar campo de email
-    - [ ] Criar campo de senha
-    - [ ] Criar campo de nome de usuário
-    - [ ] Criar campo de número de whatsapp
-    - [ ] Criar campo botão de confirmação
+    - [X] Criar campo de senha
+    - [X] Criar campo de nome de usuário
+    - [X] Criar campo de número de whatsapp
+    - [X] Criar campo botão de confirmação
   - [ ] Criar o modelo no banco de dados [Responsável: Daniel]
     - [ ] Criar campo de email
     - [ ] Criar campo de senha
