@@ -1,8 +1,9 @@
-{% extends "main_app/layout.html" %} {% load static %} {% block body %}
+{% extends "main_app/layout.html" %} {% load static %} {% load livereload_tags%}
+{% block body %}
 
-<link rel="stylesheet" href="{% static 'main_app/css/register.css' %}" />
+<link rel="stylesheet" href="{% static 'main_app/css/register.css' %}?v=1" />
 
-<div class="general-container animated">
+<div class="general-container">
   <form action="{% url 'register' %}" method="post" class="form">
     <h2>Cadastre-se</h2>
     {% csrf_token %}
@@ -29,7 +30,7 @@
 
       <span class="error">{{form.password2.errors }}</span>
     </div>
-    <input class="btn btn-primary" type="submit" value="Cadastrar" />
+    <input class="btn btn-primary" id="button" type="submit" value="Cadastrar" />
     <div class="login">
       Já possui uma conta? <a href="{% url 'login' %}">Faça login aqui!</a>
     </div>

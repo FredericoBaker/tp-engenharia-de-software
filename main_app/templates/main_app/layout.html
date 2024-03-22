@@ -1,11 +1,11 @@
 <!-- Esse arquivo é um modelo para todos os outros. Aqui podem ser feitas alterações no cabeçalho entre outras -->
-
-{% load static %}
+{% load static %}  {% load livereload_tags%}
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>{% block title %}OW! Remédio{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main_app/css/layout.css' %}?v=1" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -26,19 +26,11 @@
     ></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-    <!--React Router-->
-    <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
-
-    <!-- MUI core -->
-    <script src="https://unpkg.com/@mui/material@latest/umd/material-ui.production.min.js"></script>
-    <!-- MUI icons -->
-    <script src="https://unpkg.com/@mui/icons-material@latest/umd/material-ui-icons.min.js"></script>
-
     <link href="{% static 'main_app/css/styles.css' %}" rel="stylesheet" />
     {% block script %} {% endblock %}
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="{% url 'index' %}">OW! Remédio</a>
 
       <div>
@@ -58,7 +50,7 @@
             <a class="nav-link" href="{% url 'login' %}">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'register' %}">Cadastrar</a>
+            <a class="btn btn-primary" href="{% url 'register' %}">Cadastrar</a>
           </li>
           {% endif %}
         </ul>

@@ -1,15 +1,22 @@
 body {
-  background-color: #eceff1;
+  background-color: #eaf1ef;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .general-container {
   display: flex;
   width: 100vw;
-  height: 92vh;
+  height: calc(100vh - 56px);
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(to right, #a89cc8, #8d77be, #66508c);
+}
+
+@media (maxwidth: 767) {
+  .general-container {
+    height: calc(100vh - 50px);
+  }
 }
 
 .form {
@@ -19,74 +26,80 @@ body {
   align-items: center;
   background-color: white;
   width: 35rem;
-  padding: 1.5% 2% 1.5% 2%;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  animation: fadeInAnimation 1s ease-in-out;
 }
 
 .form h2 {
+  color: #8d77be;
+  font-weight: 600;
   margin-bottom: 1rem;
 }
 
 .form-group {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.form-group input {
-  width: calc(100% - 20px);
-  padding: 10px;
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
   transition: border-color 0.3s;
 }
 
-.error {
-  color: red;
-  font-size: 0.75em;
-  margin-top: 0.3rem;
-}
-
-.form-group input:focus {
-  border-color: #5cb85c;
-  outline: none;
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #8d77be;
 }
 
 .form-group label {
-  display: block;
   margin-bottom: 5px;
   color: #666;
+  font-weight: 500;
 }
 
-.btn-primary {
-  width: 95%;
-  background-color: #4cae4c;
+#button {
+  background-color: #8d77be;
   color: white;
   border: none;
-  border-radius: 5px;
+  padding: 10px 15px;
+  border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background 0.3s;
+  width: 100%;
+  margin-top: 0.5rem;
+  font-weight: bold;
 }
 
 .btn-primary:hover {
-  background-color: #4cae4c;
+  background-color: #5a52d5;
 }
 
 .login {
-  margin-top: 2rem;
+  margin-top: 1rem;
+  color: #666;
 }
 
-.animated {
-  animation: fade-In 0.5s ease-in-out;
+.login a {
+  color: #8d77be;
+  text-decoration: none;
 }
 
-@keyframes fade-In {
+.login a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeInAnimation {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
