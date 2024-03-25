@@ -1,13 +1,14 @@
 {% extends "main_app/layout.html" %} {% load static %} {% block body %}
-<link rel="stylesheet" href="{% static 'main_app/css/login.css' %}" />
+
+<link rel="stylesheet" href="{% static 'main_app/css/login.css' %}?v=1" />
 
 <div class="general-container">
   <div class="login-container animated">
     <form action="{% url 'login' %}" method="post" class="login-form">
       {% csrf_token %}
-      <h2>Login</h2>
+      <h4 class="h4">Login</h4>
       <div class="form-group">
-        {{ form.username.label_tag }} {{ form.username }} {% if form.username.errors %}
+          {{ form.username.label_tag }} {{ form.username }} {% if form.username.errors %}
         <span class="error">{{ form.username.errors.as_text }}</span>
         {% endif %}
       </div>
