@@ -1,7 +1,4 @@
 {% extends "main_app/layout.html" %} {% load static %} {% block body %}  {% if exists %} 
-
-<<<<<<< HEAD
-{% block body %}
 <link rel="stylesheet" href="{% static 'main_app/css/profile.css' %}?v=1" />
 
 <div">
@@ -10,7 +7,7 @@
             <div class="circle">{{ user.username }}</div>
         </div>
         <div class="item">
-            <h3 class="title">Informações pessoais</h3>
+            <h5 class="h5 title">Informações pessoais</h5>
             <br>
             <p class="label">Nome de usuário: </p><p>{{ user.username }}</p>
             <br>
@@ -20,35 +17,7 @@
         </div>
     </section>
 </div>
-=======
-<link rel="stylesheet" href="{% static 'main_app/css/profile.css' %}?v=1" />
->>>>>>> 3ceec7b6a037c1a2fdd4121f025a2bb76fc581cb
 
-<div class="general-container">
-  <div id="container-info">
-    <div class="user-info">
-    <div class="button-title">
-      <h1 class='title'>Informações pessoais</h1>
-      <button class="btn btn-primary">Edit</button>
-    </div>
-    <div class="name">
-      <h2>Nome de usuário</h2>
-      <p>{{ user.username }}</p>
-    </div>
-    <div class="email">
-      <h2>Email</h2>
-      <p>{{ user.email }}</p>
-    </div>
-    <div class="Whatsapp">
-      <h2>Whatsapp</h2>
-      <p>{{ user.whatsapp_number }}</p>
-    </div>
-    </div>
-  </div>
-
-  {% else %}
-  <h3>Esse usuário não existe.</h3>
-</div>
 {% endif %} {% endblock %} {% block script %}
 <script src=""></script>
 {% endblock %}
