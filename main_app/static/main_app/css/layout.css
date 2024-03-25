@@ -17,6 +17,10 @@ nav {
   padding-left: 1rem;
 }
 
+.nav-link{
+  color: #fff;
+}
+
 #brand {
   color: white;
   font-weight: 600;

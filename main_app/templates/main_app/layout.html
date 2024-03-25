@@ -33,10 +33,13 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="nav-bar-layout">
         <a class="navbar-brand" id="brand" href="{% url 'index' %}">OW! Remédio</a>
-
+        
         <div>
           <ul class="navbar-nav mr-auto">
             {% if user.is_authenticated %}
+            
+            <img src="../main_app/public/profile.ico" alt="">
+
             <li class="nav-item">
               <a
                 class="nav-link"

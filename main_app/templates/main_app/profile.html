@@ -2,17 +2,24 @@
 {% load static %}
 
 {% block body %}
-    {% if exists %}
-    <div id="user-info">
-        <h3>{{ user.username }}</h3>
-        <p>{{ user.email }}</p>
-        <p>{{ user.whatsapp_number }}</p>
-    </div>
+<link rel="stylesheet" href="{% static 'main_app/css/profile.css' %}?v=1" />
 
-    
-    {% else %}
-    <h3>Esse usuário não existe.</h3>
-    {% endif %}
+<div">
+    <section class="container grid grid-template-columns">
+        <div class="item">
+            <div class="circle">{{ user.username }}</div>
+        </div>
+        <div class="item">
+            <h3 class="title">Informações pessoais</h3>
+            <br>
+            <p class="label">Nome de usuário: </p><p>{{ user.username }}</p>
+            <br>
+            <p class="label">Número de WhatsApp: </p><p>{{ user.whatsapp_number }}</p>
+            <br>
+            <p class="label">E-mail: </p><p>{{ user.email }}</p>
+        </div>
+    </section>
+</div>
 
 {% endblock %}
 
