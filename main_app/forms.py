@@ -21,7 +21,7 @@ class CustomUserCreationForm(UserCreationForm):
         pattern = re.compile(r'^\(?\d{2}\)? ?\d{5}-?\d{4}$')
 
         if not pattern.match(whatsappNumber) or len(whatsappDigits) != 11:
-            raise ValidationError('Número não está no formato correto. Por favor digite um número com 11 digitos incluindo o DDD e o 9 inicial. Use o formato a seguir: XXXXXXXXXXX')
+            raise ValidationError('Por favor, digite um número no formato (XX) XXXXX-XXXX')
         
 
         return whatsappDigits

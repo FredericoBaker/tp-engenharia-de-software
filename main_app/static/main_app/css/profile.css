@@ -1,0 +1,41 @@
+body {
+  background-color: #eaf1ef;
+  font-family: Poppins;
+}
+
+.grid-template-columns {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 550px;
+  max-height: 300px;
+  height: 200vh;
+  margin: 0 auto;
+  padding: 2%;
+  margin-top: 50px;
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: gray;
+  font-weight: 700;
+}
+
+.title {
+  font-weight: 700;
+  color: #8d77be;
+}
+
+.label {
+  color: gray;
+}
