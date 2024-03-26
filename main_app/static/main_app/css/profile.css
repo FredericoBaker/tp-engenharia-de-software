@@ -3,6 +3,15 @@ body {
   font-family: Poppins;
 }
 
+.general-container{
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - 60px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .grid-template-columns {
   display: flex;
   justify-content: space-around;
@@ -10,28 +19,44 @@ body {
   background: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  padding: 20px;
+  padding: 1rem;
   width: 100%;
-  max-width: 550px;
-  max-height: 300px;
+  max-width: 40%;
+  max-height: 30rem;
   height: 200vh;
   margin: 0 auto;
-  padding: 2%;
   margin-top: 50px;
 }
 
-.circle {
+.item{
+  display: flex;
+  flex-direction: column;
+}
+
+.label{
+  margin-bottom: 0.5rem;
+}
+
+.info{
+  margin-bottom: 2.5rem;
+}
+
+#profile_image {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
-  height: 150px;
+  width: 15rem;
+  height: 15rem;
   border-radius: 50%;
   background-color: gray;
   font-weight: 700;
+  color: white;
+  font-size: 6rem;
 }
 
 .title {
+  margin-bottom: 4rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #8d77be;
 }
