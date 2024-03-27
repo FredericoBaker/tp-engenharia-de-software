@@ -10,7 +10,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to right, #a89cc8, #8d77be, #66508c);
 }
 
 @media (maxwidth: 767) {
@@ -83,8 +82,8 @@ body {
   font-size: 1rem;
 }
 
-.btn-primary:hover {
-  background-color: #5a52d5;
+#button:hover {
+  background-color: #ac96da;
 }
 
 .login {

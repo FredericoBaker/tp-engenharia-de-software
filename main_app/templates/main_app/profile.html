@@ -1,23 +1,33 @@
 {% extends "main_app/layout.html" %} {% load static %} {% block body %}  {% if exists %} 
 <link rel="stylesheet" href="{% static 'main_app/css/profile.css' %}?v=1" />
 
-<div">
+<div class="general-container">
     <section class="container grid grid-template-columns">
         <div class="item">
-            <div class="circle">{{ user.username }}</div>
+            <div id="profile_image"></div>
         </div>
+        
         <div class="item">
-            <h5 class="h5 title">Informações pessoais</h5>
-            <br>
-            <p class="label">Nome de usuário: </p><p>{{ user.username }}</p>
-            <br>
-            <p class="label">Número de WhatsApp: </p><p>{{ user.whatsapp_number }}</p>
-            <br>
-            <p class="label">E-mail: </p><p>{{ user.email }}</p>
+            <h1 class="title">Informações pessoais</h1>
+            <p class="label">Nome de usuário:</p>
+            <p class="info" id="name">{{ user.username }}</p>
+            <p class="label">Número de WhatsApp: </p>
+            <p class="info">{{ user.whatsapp_number }}</p>
+            <p class="label">E-mail: </p>
+            <p class="info">{{ user.email }}</p>
         </div>
     </section>
 </div>
 
 {% endif %} {% endblock %} {% block script %}
-<script src=""></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var name = $('#name').text().split(' ');
+        var firstName = name[0];
+        var lastName = name[name.length - 1]
+        var initials = firstName.charAt(0).toUpperCase() + " " + lastName === undefined ? '' : lastName.charAt(0).toUpperCase();
+        $('#profile_image').text(initials)
+    })
+</script>
 {% endblock %}
