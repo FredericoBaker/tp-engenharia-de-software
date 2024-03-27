@@ -1,0 +1,64 @@
+{% extends "main_app/layout.html" %}
+
+{% block body %}
+
+<h2>Novo Medicamento</h2>
+
+<form action="{% url 'register_medication' %}" method="post">
+    {% csrf_token %}
+    <div id="basic-info" class="form-group">
+        <h3 class="section-title"><span>1.</span> Remédio</h3>
+        <div>
+            {{ form.name_field.label_tag }}
+            {{ form.name_field }}
+            {{ form.name_field.errors }}
+        </div>
+
+        <div>
+            {{ form.notify_field.label_tag }}
+            {{ form.notify_field }}
+            {{ form.notify_field.errors }}
+        </div>
+
+        <div>
+            {{ form.observations_field.label_tag }}
+            {{ form.observations_field }}
+            {{ form.observations_field.errors }}
+        </div>
+    </div>
+
+    <div id="consumption" class="form-group">
+        <h3 class="section-title"><span>2.</span> Posologia</h3>
+        <div>
+            {{ form.frequency_field.label_tag }}
+            {{ form.frequency_field }}
+            {{ form.frequency_field.errors }}
+        </div>
+
+        <div>
+            {{ form.dose_field.label_tag }}
+            {{ form.dose_field }}
+            {{ form.dose_field.errors }}
+        </div>
+    </div>
+
+    <div id="frequency" class="form-group">
+        <h3 class="section-title"><span>3.</span> Período de Tratamento</h3>
+        <div>
+            {{ form.start_datetime_field.label_tag }}
+            {{ form.start_datetime_field }}
+            {{ form.start_datetime_field.errors }}
+        </div>
+
+        <div>
+            {{ form.end_datetime_field.label_tag }}
+            {{ form.end_datetime_field }}
+            {{ form.end_datetime_field.errors }}
+        </div>
+    </div>
+    
+    <a href="{% url 'index' %}">Cancelar</a>
+    <input class="btn btn-primary" type="submit" value="Cadastrar">
+</form>
+
+{% endblock %}
