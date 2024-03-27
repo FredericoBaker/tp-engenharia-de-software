@@ -5,8 +5,7 @@ body {
 
 .general-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 100vw;
   height: calc(100vh - 60px);
 }
@@ -22,8 +21,7 @@ body {
   max-width: 400px;
   max-height: 400px;
   height: 60vh;
-  margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 5%;
 }
 
 .login-container h2 {
@@ -94,6 +92,21 @@ body {
   font-weight: 700;
   color: #8d77be;
   padding: 20px;
+}
+
+.brand {
+  font-weight: 700;
+  color: #3f08b8;
+  font-size: 1.7rem;
+}
+
+.slogan {
+  font-size: 1.7rem;
+}
+
+.slogan-container{
+  display: block;
+  align-self: center;
 }
 
 @keyframes fadeInAnimation {

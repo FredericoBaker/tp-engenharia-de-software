@@ -68,7 +68,7 @@ body {
 }
 
 #button {
-  background-color: #8d77be;
+  background-color: #3f08b8;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -83,7 +83,7 @@ body {
 }
 
 #button:hover {
-  background-color: #ac96da;
+  background-color: #8d77be;
 }
 
 .login {
