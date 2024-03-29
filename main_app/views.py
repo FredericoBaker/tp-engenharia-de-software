@@ -78,19 +78,18 @@ def index(request):
         return HttpResponseRedirect(reverse("login"))
 
 def register_madication(request):
-    # TODO: Adicionar validação formulário:
-    """ if request.method == "POST":
+    if request.method == "POST":
         form = CustomMedicationCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
+            print(form)
+            #form.save()
             return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "main_app/registerMedication.html", {
                 "form": form
             })
-    else: """
-    form = CustomMedicationCreationForm()
+    else:
+        form = CustomMedicationCreationForm()
     return render(request, "main_app/registerMedication.html", {
         "form": form,
     });
