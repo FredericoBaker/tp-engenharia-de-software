@@ -35,48 +35,55 @@ class CustomAuthenticationForm(AuthenticationForm):
 
 class CustomMedicationCreationForm(forms.Form):
     name_field = forms.CharField(
-        label="Nome do medicamento", 
+        label='Nome do medicamento', 
         max_length=100, 
         required=True, 
-        help_text="Nome do medicamento que será utilizado no tratamento."
+        help_text='Nome do medicamento que será utilizado no tratamento.'
     )
 
-    frequency_field = forms.IntegerField(
-        label="Frequência (horas)", 
-        min_value=1, 
+    frequency_field = forms.FloatField(
+        label='Frequência (horas)', 
+        min_value=0.5, 
         required=True, 
-        help_text="Quantidade de horas entre as dosagens."
+        help_text='Quantidade de horas entre as dosagens.',
+        widget=forms.NumberInput(attrs={'step': '0.5'})
     )
     
     dose_field = forms.CharField(
-        label="Dosagem", 
+        label='Dosagem', 
         max_length=100, 
         required=True, 
-        help_text="Quanto do medicamento é administrado. Por exemplo: 1 comprimido, 10 mg, etc..."
+        help_text='Quanto do medicamento é administrado. Por exemplo: 1 comprimido, 10 mg, etc...'
     )
 
-    start_datetime_field = forms.SplitDateTimeField(
-        label="Data de início", 
+    start_datetime_field = forms.DateTimeField(
+        label='Data de início', 
         required=True, 
-        help_text="Data em que irá iniciar o tratamento com o remédio."
+        help_text='Data em que irá iniciar o tratamento com o remédio.',
+        widget=forms.TextInput(attrs={'type': 'datetime-local'})
     )
 
-    end_datetime_field = forms.SplitDateTimeField(
-        label="Data de fim", 
+    end_datetime_field = forms.DateTimeField(
+        label='Data de fim', 
         required=False,
-        help_text="Última data que o remédio precisa ser aministrado."
+        help_text='Última data que o remédio precisa ser aministrado.',
+        widget=forms.TextInput(attrs={'type': 'datetime-local'})
     )
 
-    notify_field = forms.ChoiceField(
-        label="Receber avisos", 
+    notify_field = forms.BooleanField(
+        label='Receber avisos', 
         required=True, 
-        help_text="Deseja receber lembretes de tomar o remédio pelo telefone?"
+        help_text='Deseja receber lembretes de tomar o remédio pelo telefone?'
     )
 
     observations_field = forms.CharField(
-        label="Observações", 
+        label='Observações', 
         required=False, 
-        help_text="Informações extras sobre o acompanhamento"
+        help_text='Informações extras sobre o acompanhamento',
+        widget=forms.Textarea(attrs={
+            'rows': '5',
+            'maxlength': 500,
+        })
     )
 
     class Meta():
