@@ -2,63 +2,68 @@
 
 {% block body %}
 
-<h2>Novo Medicamento</h2>
+    <h2>Novo Medicamento</h2>
 
-<form action="{% url 'register_medication' %}" method="post">
-    {% csrf_token %}
-    <div id="basic-info" class="form-group">
-        <h3 class="section-title"><span>1.</span> Remédio</h3>
-        <div>
-            {{ form.name_field.label_tag }}
-            {{ form.name_field }}
-            {{ form.name_field.errors }}
+    <form action="{% url 'register_medication' %}" method="post">
+        {% csrf_token %}
+        <div id="basic-info">
+            <h3 class="section-title"><span>1.</span> Remédio</h3>
+
+            <div class="form-group">
+                {{ form.name.label_tag }}
+                {{ form.name }}
+                {{ form.name.errors }}
+            </div>
+
+            <div class="form-group">
+                {{ form.notify.label_tag }}
+                {{ form.notify }}
+                {{ form.notify.errors }}
+            </div>
+
+            <div class="form-group">
+                {{ form.observations.label_tag }}
+                {{ form.observations }}
+                {{ form.observations.errors }}
+            </div>
         </div>
 
-        <div>
-            {{ form.notify_field.label_tag }}
-            {{ form.notify_field }}
-            {{ form.notify_field.errors }}
+        <div id="consumption">
+            <h3 class="section-title"><span>2.</span> Posologia</h3>
+
+            <div class="form-group">
+                {{ form.frequency.label_tag }}
+                {{ form.frequency }}
+                {{ form.frequency.errors }}
+            </div>
+
+            <div class="form-group">
+                {{ form.dose.label_tag }}
+                {{ form.dose }}
+                {{ form.dose.errors }}
+            </div>
         </div>
 
-        <div>
-            {{ form.observations_field.label_tag }}
-            {{ form.observations_field }}
-            {{ form.observations_field.errors }}
-        </div>
-    </div>
+        <div id="frequency">
+            <h3 class="section-title"><span>3.</span> Período de Tratamento</h3>
 
-    <div id="consumption" class="form-group">
-        <h3 class="section-title"><span>2.</span> Posologia</h3>
-        <div>
-            {{ form.frequency_field.label_tag }}
-            {{ form.frequency_field }}
-            {{ form.frequency_field.errors }}
-        </div>
+            <div class="form-group">
+                {{ form.start_datetime.label_tag }}
+                {{ form.start_datetime }}
+                {{ form.start_datetime.errors }}
+            </div>
 
-        <div>
-            {{ form.dose_field.label_tag }}
-            {{ form.dose_field }}
-            {{ form.dose_field.errors }}
+            <div class="form-group">
+                {{ form.end_datetime.label_tag }}
+                {{ form.end_datetime }}
+                {{ form.end_datetime.errors }}
+            </div>
         </div>
-    </div>
-
-    <div id="frequency" class="form-group">
-        <h3 class="section-title"><span>3.</span> Período de Tratamento</h3>
-        <div>
-            {{ form.start_datetime_field.label_tag }}
-            {{ form.start_datetime_field }}
-            {{ form.start_datetime_field.errors }}
-        </div>
-
-        <div>
-            {{ form.end_datetime_field.label_tag }}
-            {{ form.end_datetime_field }}
-            {{ form.end_datetime_field.errors }}
-        </div>
-    </div>
-    
-    <a href="{% url 'index' %}">Cancelar</a>
-    <input class="btn btn-primary" type="submit" value="Cadastrar">
-</form>
+        
+        <a href="{% url 'index' %}">Cancelar</a>
+        <button type="submit">
+            Cadastrar
+        </button>
+    </form>
 
 {% endblock %}
