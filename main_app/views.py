@@ -81,8 +81,8 @@ def register_madication(request):
     if request.method == "POST":
         form = CustomMedicationCreationForm(request.POST)
         if form.is_valid():
-            print(form)
-            #form.save()
+            form.instance.user = request.user
+            form.save()
             return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "main_app/registerMedication.html", {
@@ -90,6 +90,6 @@ def register_madication(request):
             })
     else:
         form = CustomMedicationCreationForm()
-    return render(request, "main_app/registerMedication.html", {
-        "form": form,
-    });
+        return render(request, "main_app/registerMedication.html", {
+            "form": form,
+        });
