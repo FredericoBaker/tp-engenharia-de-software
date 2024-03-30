@@ -33,59 +33,96 @@ class CustomAuthenticationForm(AuthenticationForm):
         'inactive': ("Usuário Inativo."),
     }
 
-class CustomMedicationCreationForm(forms.Form):
-    name_field = forms.CharField(
+class CustomMedicationCreationForm(forms.ModelForm):
+    name = forms.CharField(
         label='Nome do medicamento', 
         max_length=100, 
         required=True, 
-        help_text='Nome do medicamento que será utilizado no tratamento.'
+        help_text='Nome do medicamento que será utilizado no tratamento.',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Nome do medicamento',
+                'title': 'Qual é o nome do medicamento que será utilizado no tratamento?',
+            }
+        )
     )
 
-    frequency_field = forms.FloatField(
+    frequency = forms.FloatField(
         label='Frequência (horas)', 
         min_value=0.5, 
         required=True, 
         help_text='Quantidade de horas entre as dosagens.',
-        widget=forms.NumberInput(attrs={'step': '0.5'})
+        widget=forms.NumberInput(
+            attrs={
+                'step': '0.5',
+                'title': 'De quantas em quantas horas o medicamento deve ser administrado?',
+            }
+        )
     )
     
-    dose_field = forms.CharField(
+    dose = forms.CharField(
         label='Dosagem', 
         max_length=100, 
         required=True, 
-        help_text='Quanto do medicamento é administrado. Por exemplo: 1 comprimido, 10 mg, etc...'
+        help_text='Quanto do medicamento é administrado. Por exemplo: 1 comprimido, 10 mg, etc...',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Ex.: 1 comprimido, 10 mg, etc...',
+                'title': 'Quanto do medicamento deve ser usado?',
+            }
+        )
     )
 
-    start_datetime_field = forms.DateTimeField(
+    start_datetime = forms.DateTimeField(
         label='Data de início', 
         required=True, 
-        help_text='Data em que irá iniciar o tratamento com o remédio.',
-        widget=forms.TextInput(attrs={'type': 'datetime-local'})
+        help_text='Data em que irá iniciar o tratamento com o remédio. O formato da data é: dd/mm/aaaa hh:mm.',
+        widget=forms.DateTimeInput(
+            attrs={
+                'type': 'datetime-local',
+                'title': 'Esta é a data em que irá iniciar o tratamento com o remédio. O formato da data é: dd/mm/aaaa hh:mm.',
+            }
+        )
     )
 
-    end_datetime_field = forms.DateTimeField(
+    end_datetime = forms.DateTimeField(
         label='Data de fim', 
         required=False,
-        help_text='Última data que o remédio precisa ser aministrado.',
-        widget=forms.TextInput(attrs={'type': 'datetime-local'})
+        help_text='Última data que o remédio precisa ser aministrado. O formato da data é: dd/mm/aaaa hh:mm. Caso não tenha uma data de fim, deixe em branco.',
+        widget=forms.DateTimeInput(
+            attrs={
+                'type': 'datetime-local',
+                'title': 'Última data que o remédio precisa ser aministrado. O formato da data é: dd/mm/aaaa hh:mm. Caso não tenha uma data de fim, deixe em branco.',
+            }
+        )
     )
 
-    notify_field = forms.BooleanField(
+    notify = forms.BooleanField(
         label='Receber avisos', 
-        required=True, 
-        help_text='Deseja receber lembretes de tomar o remédio pelo telefone?'
+        required=False, 
+        help_text='Deseja receber lembretes de quando tomar o remédio pelo telefone?',
+        widget=forms.CheckboxInput(
+            attrs={
+                'type': 'checkbox',
+                'title': 'Deseja receber lembretes de quando tomar o remédio pelo telefone?',
+            }
+        )
     )
 
-    observations_field = forms.CharField(
+    observations = forms.CharField(
         label='Observações', 
         required=False, 
-        help_text='Informações extras sobre o acompanhamento',
-        widget=forms.Textarea(attrs={
-            'rows': '5',
-            'maxlength': 500,
-        })
+        help_text='Informações extras sobre o tratamento',
+        widget=forms.Textarea(
+            attrs={
+                'rows': 5,
+                'maxlength': 500,
+                'placeholder': 'Alguma informação a mais que gostaria de adicionar para ser lembrado?',
+                'title': 'Adicione qualquer informação que julgar importante sobre o tratamento para ser lembrado.',
+            }
+        )
     )
 
-    class Meta():
+    class Meta:
         model = Medication
-        fields = ('name', 'frequency', 'dose', 'start_datetime', 'end_date', 'observations',)
+        fields = ('name', 'frequency', 'dose', 'start_datetime', 'end_date', 'notify', 'observations')
