@@ -9,6 +9,7 @@ from .models import User
 from .models import Medication
 from .forms import CustomUserCreationForm
 from .forms import CustomAuthenticationForm
+from .forms import CustomMedicationCreationForm
 from datetime import datetime, timedelta
 from django.utils import timezone
 
@@ -75,3 +76,20 @@ def index(request):
         })
     else:
         return HttpResponseRedirect(reverse("login"))
+
+def register_madication(request):
+    if request.method == "POST":
+        form = CustomMedicationCreationForm(request.POST)
+        if form.is_valid():
+            form.instance.user = request.user
+            form.save()
+            return HttpResponseRedirect(reverse("index"))
+        else:
+            return render(request, "main_app/registerMedication.html", {
+                "form": form
+            })
+    else:
+        form = CustomMedicationCreationForm()
+        return render(request, "main_app/registerMedication.html", {
+            "form": form,
+        });
