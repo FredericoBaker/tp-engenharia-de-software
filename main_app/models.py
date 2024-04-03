@@ -5,7 +5,6 @@ from django.conf import settings
 from datetime import datetime, timedelta
 from django.utils import timezone
 
-
 class User(AbstractUser):
     id = models.AutoField(primary_key=True)
     whatsapp_number = models.CharField(max_length=30, blank=True)

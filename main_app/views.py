@@ -1,3 +1,5 @@
+import os
+
 from django.contrib.auth import login, logout
 from django.db import models
 from django.http import HttpResponseRedirect
@@ -13,6 +15,14 @@ from .forms import CustomMedicationCreationForm
 from datetime import datetime, timedelta
 from django.utils import timezone
 
+from twilio.rest import Client
+from textwrap import dedent
+
+ACCOUNT_SID = "" # os.getenv("TWILIO_ACCOUNT_SID")
+AUTH_TOKEN = "" # os.getenv("TWILIO_AUTH_TOKEN")
+TWILIO_NUMBER = "" # os.getenv("TWILIO_WHATSAPP_NUMBER")
+
+client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
 def register(request):
     if request.method == "POST":
@@ -77,19 +87,44 @@ def index(request):
     else:
         return HttpResponseRedirect(reverse("login"))
 
-def register_madication(request):
+def send_whatsapp_message(phone, content):
+    client.messages.create(
+        from_=f'whatsapp:+{TWILIO_NUMBER}',
+        body=content,
+        to=f'whatsapp:+55{phone}',
+    )
+
+def build_message(user, form_instance):
+    proxima_dose = form_instance.start_datetime + timedelta(hours=form_instance.frequency)
+    message = dedent(f"""*Nova medicação adicionada!* 📝
+    
+Olá, *{user.username}*!
+
+🙌 Sua medicação foi cadastrada com sucesso no sistema. Aqui estão os detalhes:
+
+    - *Medicamento*: {form_instance.name}
+    - *Dosagem*: {form_instance.dose}
+    - *Frequência*: A cada {form_instance.frequency} horas
+    - *Começa em*: {form_instance.start_datetime.strftime("%d/%m/%Y às %H:%M")}
+    - *Próxima dose*: {proxima_dose.strftime("%d/%m/%Y às %H:%M")}
+
+🔔 Você receberá lembretes automáticos para tomar seu medicamento conforme programado.
+
+Desejamos a você saúde e bem-estar! 💊✨
+""")
+    return message
+
+def register_medication(request):
     if request.method == "POST":
         form = CustomMedicationCreationForm(request.POST)
         if form.is_valid():
             form.instance.user = request.user
             form.save()
+            message = build_message(request.user, form.instance)
+            send_whatsapp_message(phone=request.user.whatsapp_number, content=message)
             return HttpResponseRedirect(reverse("index"))
         else:
-            return render(request, "main_app/registerMedication.html", {
-                "form": form
-            })
+            return render(request, "main_app/registerMedication.html", {"form": form})
     else:
         form = CustomMedicationCreationForm()
-        return render(request, "main_app/registerMedication.html", {
-            "form": form,
-        });
+        return render(request, "main_app/registerMedication.html", {"form": form})
