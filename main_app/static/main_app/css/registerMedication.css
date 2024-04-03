@@ -1,0 +1,132 @@
+body {
+    background-color: #eaf1ef;
+    font-family: Poppins;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #eaf1ef;
+    height: 100%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#registration-form {
+    background-color: #FEFEFE;
+    border-radius: 20px;
+    width: 45vw;
+    padding: 2.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    animation: fadeInAnimation 1s ease-in-out;
+}
+
+.title-h2 {
+    color: #8d77be;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    color: #5A4C78;
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+}
+
+.section-title > span:first-of-type {
+    height: 32px;
+    width: 32px;
+    line-height: 32px;
+    background-color: #8D77BE;
+    color: #FEFEFE;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    margin-right: 12px;
+}
+
+#basic-info, #consumption {
+    border-bottom: 2px solid #DADADA;
+    margin-bottom: 1rem;
+}
+
+#consumption, #frequency {
+    margin-top: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group > input, .form-group > textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    min-height: 42px;
+}
+
+.form-group > label {
+    font-size: 1rem;
+    margin-bottom: 2px;
+    color: #666;
+    font-weight: 500;
+}
+
+#notify-input-group {
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+#notify-input-group > input {
+    width: auto;
+    margin-left: 9px;
+    margin-top: 0px;
+    width: 21px;
+    height: 21px;
+}
+
+#confirmation-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#submit-button {
+    background-color: #8D77BE;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 0.8rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+#cancel-button {
+    background-color: white;
+    color: #8D77BE;
+    border: 1px solid #8D77BE;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 0.8rem;
+    font-weight: bold;
+    font-size: 1rem;
+}

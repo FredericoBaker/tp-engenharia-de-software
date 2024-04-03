@@ -41,7 +41,7 @@ class CustomMedicationCreationForm(forms.ModelForm):
         help_text='Nome do medicamento que será utilizado no tratamento.',
         widget=forms.TextInput(
             attrs={
-                'placeholder': 'Nome do medicamento',
+                'placeholder': 'Qual é o nome do medicamento que será utilizado no tratamento?',
                 'title': 'Qual é o nome do medicamento que será utilizado no tratamento?',
             }
         )
@@ -56,6 +56,7 @@ class CustomMedicationCreationForm(forms.ModelForm):
             attrs={
                 'step': '0.5',
                 'title': 'De quantas em quantas horas o medicamento deve ser administrado?',
+                'Placeholder': 'De quantas em quantas horas o medicamento deve ser administrado?',
             }
         )
     )
@@ -117,7 +118,7 @@ class CustomMedicationCreationForm(forms.ModelForm):
             attrs={
                 'rows': 5,
                 'maxlength': 500,
-                'placeholder': 'Alguma informação a mais que gostaria de adicionar para ser lembrado?',
+                'placeholder': 'Alguma informação que gostaria de adicionar para ser lembrado?',
                 'title': 'Adicione qualquer informação que julgar importante sobre o tratamento para ser lembrado.',
             }
         )
