@@ -48,14 +48,14 @@ class CustomMedicationCreationForm(forms.ModelForm):
     )
 
     frequency = forms.IntegerField(
-        label='Frequência (horas)', 
+        label='Frequência (minutos)', 
         min_value=1, 
         required=True, 
-        help_text='Quantidade de horas entre as dosagens.',
+        help_text='Quantidade de minutos entre as dosagens.',
         widget=forms.NumberInput(
             attrs={
                 'step': '1',
-                'title': 'De quantas em quantas horas o medicamento deve ser administrado?',
+                'title': 'De quantos em quantos minutos o medicamento deve ser administrado?',
             }
         )
     )

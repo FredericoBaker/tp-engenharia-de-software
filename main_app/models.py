@@ -15,7 +15,7 @@ class User(AbstractUser):
 class Medication(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="medications")
     name = models.CharField(max_length=100, verbose_name="Medication Name")
-    frequency = models.IntegerField(verbose_name="Frequency of Dosage (hours)", help_text="Número de horas entre doses")
+    frequency = models.IntegerField(verbose_name="Frequency of Dosage (Minutes)", help_text="Número de minutos entre doses")
     dose = models.CharField(max_length=100, verbose_name="Dose", help_text="Example: '1 comprimido', '10 mg'")
     start_datetime = models.DateTimeField(verbose_name="Start Date and Time")
     end_date = models.DateField(verbose_name="End Date", help_text="Leave blank if the medication does not have an end date.", blank=True, null=True)
@@ -34,10 +34,10 @@ class Medication(models.Model):
         startDateTime = self.start_datetime
         if startDateTime:
             timeDeltaSinceStart = brazilTime - startDateTime
-            totalHoursSinceStart = timeDeltaSinceStart.total_seconds() / 3600
-            hoursSinceLastDose = totalHoursSinceStart % self.frequency
-            hoursToNextDose = self.frequency - hoursSinceLastDose
-            nextDoseTime = brazilTime + timedelta(hours=hoursToNextDose)
+            totalMinutesSinceStart = timeDeltaSinceStart.total_seconds() / 60  # Convertendo segundos para minutos
+            minutesSinceLastDose = totalMinutesSinceStart % self.frequency_minutes  # Supondo que 'frequency_minutes' é a frequência em minutos
+            minutesToNextDose = self.frequency_minutes - minutesSinceLastDose
+            nextDoseTime = brazilTime + timedelta(minutes=minutesToNextDose)
             self.next_dose_datetime = nextDoseTime
 
             self.save()
