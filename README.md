@@ -16,10 +16,20 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
 
 ## 👥 Como rodar?
 
+- Crie e ative um ambiente virtual:
+  
+  ```sh
+  $ python -m venv venv
+  $ source venv/bin/activate
+
 - Instale as dependencias:
   
   ```sh
   $ pip install -r requirements.txt
+
+- Configure as variáveis de ambiente:
+  
+  Copie o arquivo `.env.example` para um novo arquivo chamado `.env` e atualize-o com as suas configurações locais.
   
 - Faça a migração:
   
