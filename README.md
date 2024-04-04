@@ -34,13 +34,16 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
 - Faça a migração:
   
   ```sh
-  python3 manage.py makemigrations
-  python3 manage.py migrate
+  $ python3 manage.py makemigrations
+  $ python3 manage.py migrate
   
-- Depois rode o servidor:
+- Depois rode o servidor e as tarefas cron:
+
+  Para isso você pode utilizar o script `start_dev.sh`. Certifique-se de que o script tenha permissão de execução:
   
   ```sh
-  python3 manage.py runserver
+  $ chmod +x start_dev.sh
+  $ ./start_dev.sh
 
 ## 🛠 Tecnologias
 

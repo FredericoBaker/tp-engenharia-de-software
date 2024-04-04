@@ -1,8 +1,16 @@
-# Inicia runserver_plus em background
-python manage.py runserver_plus &
 
-# Loop para executar runcrons a cada minuto
+cleanup() {
+    echo "Encerrando..."
+    kill $SERVER_PID
+    exit 0
+}
+
+trap cleanup SIGINT
+
+python manage.py runserver &
+SERVER_PID=$!
+
 while true; do
     python manage.py runcrons
-    sleep 60
+    sleep 60 
 done

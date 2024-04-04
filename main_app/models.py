@@ -34,9 +34,9 @@ class Medication(models.Model):
         startDateTime = self.start_datetime
         if startDateTime:
             timeDeltaSinceStart = brazilTime - startDateTime
-            totalMinutesSinceStart = timeDeltaSinceStart.total_seconds() / 60  # Convertendo segundos para minutos
-            minutesSinceLastDose = totalMinutesSinceStart % self.frequency_minutes  # Supondo que 'frequency_minutes' é a frequência em minutos
-            minutesToNextDose = self.frequency_minutes - minutesSinceLastDose
+            totalMinutesSinceStart = timeDeltaSinceStart.total_seconds() / 60
+            minutesSinceLastDose = totalMinutesSinceStart % self.frequency
+            minutesToNextDose = self.frequency - minutesSinceLastDose
             nextDoseTime = brazilTime + timedelta(minutes=minutesToNextDose)
             self.next_dose_datetime = nextDoseTime
 

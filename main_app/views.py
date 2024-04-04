@@ -99,22 +99,19 @@ def send_whatsapp_message(phone, content):
 
 def build_message(user, form_instance):
     proxima_dose = form_instance.start_datetime + timedelta(hours=form_instance.frequency)
-    message = dedent(f"""*Nova medicação adicionada!* 📝
-    
-Olá, *{user.username}*!
+    message = (
+        f"*Nova medicação adicionada!* 📝\n\n"
+        f"Olá, *{user.username}*!\n\n"
+        "🙌 Sua medicação foi cadastrada com sucesso no sistema. Aqui estão os detalhes:\n\n"
+        f"- *Medicamento*: {form_instance.name}\n"
+        f"- *Dosagem*: {form_instance.dose}\n"
+        f"- *Frequência*: A cada {form_instance.frequency} minutos\n"
+        f"- *Começa em*: {form_instance.start_datetime.strftime('%d/%m/%Y às %H:%M')}\n"
+        f"- *Próxima dose*: {proxima_dose.strftime('%d/%m/%Y às %H:%M')}\n\n"
+        "🔔 Você receberá lembretes automáticos para tomar seu medicamento conforme programado.\n\n"
+        "Desejamos a você saúde e bem-estar! 💊✨"
+    )
 
-🙌 Sua medicação foi cadastrada com sucesso no sistema. Aqui estão os detalhes:
-
-    - *Medicamento*: {form_instance.name}
-    - *Dosagem*: {form_instance.dose}
-    - *Frequência*: A cada {form_instance.frequency} horas
-    - *Começa em*: {form_instance.start_datetime.strftime("%d/%m/%Y às %H:%M")}
-    - *Próxima dose*: {proxima_dose.strftime("%d/%m/%Y às %H:%M")}
-
-🔔 Você receberá lembretes automáticos para tomar seu medicamento conforme programado.
-
-Desejamos a você saúde e bem-estar! 💊✨
-""")
     return message
 
 def register_medication(request):
