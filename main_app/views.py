@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 
 from django.contrib.auth import login, logout
 from django.db import models
@@ -18,9 +19,11 @@ from django.utils import timezone
 from twilio.rest import Client
 from textwrap import dedent
 
-ACCOUNT_SID = "" # os.getenv("TWILIO_ACCOUNT_SID")
-AUTH_TOKEN = "" # os.getenv("TWILIO_AUTH_TOKEN")
-TWILIO_NUMBER = "" # os.getenv("TWILIO_WHATSAPP_NUMBER")
+load_dotenv()
+
+ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
+AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+TWILIO_NUMBER = os.getenv("TWILIO_WHATSAPP_NUMBER")
 
 client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
@@ -88,7 +91,7 @@ def index(request):
         return HttpResponseRedirect(reverse("login"))
 
 def send_whatsapp_message(phone, content):
-    client.messages.create(
+    message = client.messages.create(
         from_=f'whatsapp:+{TWILIO_NUMBER}',
         body=content,
         to=f'whatsapp:+55{phone}',
