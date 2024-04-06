@@ -19,11 +19,70 @@ nav {
   font-family: 'Poppins';
 }
 
-.nav-link img {
-  width: 45px;
-}
-
 #brand {
   color: white;
   font-weight: 600;
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    color: white;
+    padding: 3rem;
+    text-align: center;
+}
+
+.dropdown img {
+    width: 45px; 
+    height: 45px;
+    cursor: pointer;
+}
+
+.username {
+  background-color: #ECEFF1;
+  color: black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 0.8rem;
+}
+
+.dropdown-content {
+    border-radius: 10px;
+    display: none;
+    position: absolute;
+    background-color: #3f08b8;
+    min-width: 200px;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dropdown-content img {
+  width: 2rem;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-content a img {
+  margin-right: 10px;
+}
+
+.dropdown-content a:hover {
+    background-color: #3E2378;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.dropdown.clicked .dropdown-content {
+    display: block;
+}
+
