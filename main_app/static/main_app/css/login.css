@@ -95,6 +95,7 @@ body {
 }
 
 .brand {
+  margin-bottom: 2rem;
   font-weight: 700;
   color: #3f08b8;
   font-size: 1.5rem;
