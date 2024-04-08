@@ -2,6 +2,8 @@
 
 Trabalho Prático realizado para a disciplina de Engenharia de Software do DCC, UFMG.
 
+![Logo](logos/cover.png)
+
 ## 📋 Escopo do Sistema
 
 O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratamentos médicos, alertando o usuário sobre os horários das doses através de notificações personalizáveis e monitorando o estoque de medicamentos para sinalizar quando reabastecer. Com um calendário integrado, o usuário pode verificar a programação diária de medicamentos, enquanto o sistema registra a adesão ao tratamento, oferecendo uma visão geral da regularidade com que as medicações são tomadas. A interface do usuário é projetada para ser intuitiva, proporcionando facilidade na gestão das informações de saúde. Recursos adicionais incluem relatórios mensais de progresso, backup de dados e sincronização entre dispositivos para manter o tratamento organizado e eficaz.
