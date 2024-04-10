@@ -22,7 +22,7 @@ body {
     text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 0.8rem;
+    display: inline-block;
 }
 
 .medications-list {
@@ -33,7 +33,6 @@ body {
 }
 
 .medication-card {
-    width: 100%;
     max-width: 600px;
     background-color: #FEFEFE;
     border-radius: 10px;
@@ -61,26 +60,36 @@ body {
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    align-items: left;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .btn-add-medication {
-    padding: 10px 20px;
-    background-color: #8D77BE;
-    color: #FFFFFF;
-    border: none;
+    padding: 8px 16px;
+    background-color: transparent;
+    color: #8D77BE;
+    border: 2px solid #8D77BE;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    margin-left: 20px;
+}
+
+.btn-add-medication:hover {
+    background-color: #8D77BE;
+    color: white;
 }
 
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 50px;
+    height: 26px;
+    margin: 0 10px;
 }
 
 .switch input { 
@@ -89,48 +98,51 @@ body {
     height: 0;
 }
 
+.switch-label {
+    display: flex;
+    align-items: center; /* Alinha verticalmente com o switch */
+    justify-content: center; /* Centraliza o conteúdo na div */
+    gap: 10px; /* Espaçamento entre os elementos dentro da switch-label */
+    margin-top: 10px; /* Espaçamento acima do switch-label */
+    margin-bottom: 20px; 
+}
+
 .slider {
     position: absolute;
     cursor: pointer;
     top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .4s;
     transition: .4s;
+    border-radius: 34px;
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
+    height: 22px; 
+    width: 22px; 
+    left: 2px;
+    bottom: 2px;
     background-color: white;
-    -webkit-transition: .4s;
     transition: .4s;
+    border-radius: 50%;
 }
 
 input:checked + .slider {
     background-color: #8D77BE;
 }
 
-input:focus + .slider {
-    box-shadow: 0 0 1px #8D77BE;
-}
-
 input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    transform: translateX(24px);
 }
 
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
+.header p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #5A4C78;
 }

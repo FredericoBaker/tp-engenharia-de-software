@@ -8,10 +8,15 @@
     <div class="header">
         <h2 class="title-h2">Medicamentos</h2>
         <button class="btn-add-medication" onclick="location.href='{% url 'register_medication' %}'">Adicionar Medicamento</button>
+    </div>
+    
+    <div class="header switch-label">
+        <p>Hoje</p>
         <label class="switch">
             <input type="checkbox" id="toggleMedications">
             <span class="slider round"></span>
         </label>
+        <p>Todos</p>
     </div>
 
     {% if userMedsForToday %}
@@ -26,7 +31,7 @@
             {% endfor %}
         </div>
     {% else %}
-        <p class="no-medications">Nenhum medicamento listado para hoje.</p>
+        <p id="medicationsToday" class="no-medications">Nenhum medicamento listado para hoje.</p>
     {% endif %}
 
     {% if userMeds %}
@@ -44,10 +49,8 @@
             {% endfor %}
         </div>
     {% else %}
-        <p class="no-medications">Nenhum medicamento listado.</p>
+        <p id="allMedications" class="no-medications" style="display:none;">Nenhum medicamento listado.</p>
     {% endif %}
-    
-    <a href="{% url 'register_medication' %}" class="link-add-medication">Adicionar Medicamento</a>
 </div>
 
 <script>
