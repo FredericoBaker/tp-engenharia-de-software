@@ -18,21 +18,34 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
 
 ## 👥 Como rodar?
 
+- Crie e ative um ambiente virtual:
+  
+  ```sh
+  $ python -m venv venv
+  $ source venv/bin/activate
+
 - Instale as dependencias:
   
   ```sh
   $ pip install -r requirements.txt
+
+- Configure as variáveis de ambiente:
+  
+  Copie o arquivo `.env.example` para um novo arquivo chamado `.env` e atualize-o com as suas configurações locais.
   
 - Faça a migração:
   
   ```sh
-  python3 manage.py makemigrations
-  python3 manage.py migrate
+  $ python3 manage.py makemigrations
+  $ python3 manage.py migrate
   
-- Depois rode o servidor:
+- Depois rode o servidor e as tarefas cron:
+
+  Para isso você pode utilizar o script `start_dev.sh`. Certifique-se de que o script tenha permissão de execução:
   
   ```sh
-  python3 manage.py runserver
+  $ chmod +x start_dev.sh
+  $ ./start_dev.sh
 
 ## 🛠 Tecnologias
 
@@ -43,11 +56,11 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
 
 ## 📜 Backlog do Produto
 
-1. Como usuário, eu gostaria de criar um cadastro para mim x
-2. Como usuário, eu gostaria de fazer login e logout x
-3. Como usuário, eu gostaria de adicionar um remédio x
-4. Como usuário, eu gostaria de receber uma notificação de quando devo tomar o remédio x
-5. Como usuário, eu gostaria de ver os remédios que tenho para tomar hoje x-
+1. Como usuário, eu gostaria de criar um cadastro para mim
+2. Como usuário, eu gostaria de fazer login e logout
+3. Como usuário, eu gostaria de adicionar um remédio
+4. Como usuário, eu gostaria de receber uma notificação de quando devo tomar o remédio
+5. Como usuário, eu gostaria de ver os remédios que tenho para tomar hoje
 6. Como usuário, eu gostaria de informar que um remédio foi tomado
 7. Como usuário, eu gostaria de receber uma notificação quando o meu remédio estiver esgotando
 8. Como usuário, eu gostaria de ver em um calendário a minha regularidade nos tratamentos
@@ -100,10 +113,10 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
 
 ### História #4: Como usuário, eu gostaria de receber uma notificação de quando devo tomar o remédio
 - **Tarefas e responsáveis:**
-  - [ ] Criar a modelo de notificação de remédio [Responsável: Fred]
-  - [ ] Conectar com API de notificação [Responsável: Fred]
+  - [x] Criar a modelo de notificação de remédio [Responsável: Fred]
+  - [x] Conectar com API de notificação [Responsável: Fred]
   - [ ] Criar serviço para monitorar notificações que precisam ser enviadas [Responsável: Fred]
-  - [ ] Criar serviço para enviar notificação [Responsável: Fred]
+  - [x] Criar serviço para enviar notificação [Responsável: Fred]
 
 ### História #5: Como usuário, eu gostaria de ver os remédios que tenho para tomar hoje
 - **Tarefas e responsáveis:**
