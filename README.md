@@ -124,3 +124,18 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
   - [ ] Criar a view da tela de remédios diários [Responsável: Rubia]
 
 - [X] -> Símbolo de tarefa concluída
+
+
+## 📊 UMLS
+
+### Diagrama de Atividades
+
+Diagrama que demonstra o processo de login
+
+![DiagramaAtividades](umls/DiagramaAtividades.png)
+
+### Diagrama de Sequências
+
+Diagrama com as chamadas para cadastro de um remédio
+
+![DiagramaSequencia](umls/DiagramaSequencia.png)
