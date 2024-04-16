@@ -1,25 +1,70 @@
-<!-- A ideia é que aqui o usuário veja todos os remédios e os que tem que tomar hoje -->
-
 {% extends "main_app/layout.html" %}
 {% load static %}
 
 {% block body %}
+<link rel="stylesheet" href="{% static 'main_app/css/index.css' %}?v=1" />
+
+<div class="main-content">
+    <div class="header">
+        <h2 class="title-h2">Medicamentos</h2>
+        <button class="btn-add-medication" onclick="location.href='{% url 'register_medication' %}'">Adicionar Medicamento</button>
+    </div>
     
-{% if userMedsForToday %}
-    <ul>
-        {% for med in userMedsForToday %}
-            <li>{{ med.name }}: {{ med.dose }} every {{ med.frequency }} hours | next dose = {{ med.next_dose_datetime }}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No medications listed.</p>
-{% endif %}
+    <div class="header switch-label">
+        <p>Hoje</p>
+        <label class="switch">
+            <input type="checkbox" id="toggleMedications">
+            <span class="slider round"></span>
+        </label>
+        <p>Todos</p>
+    </div>
 
-<a href="{% url 'register_medication' %}">Add medication</a>
+    {% if userMedsForToday %}
+        <div id="medicationsToday" class="medications-list">
+            {% for med in userMedsForToday %}
+                <div class="medication-card">
+                    <p class="medication-name">{{ med.name }}</p>
+                    <p class="medication-detail">Você deve tomar essa medicação às {{ med.next_dose_datetime|date:"H:i" }}</p>
+                    <p class="medication-detail"><strong>Dose:</strong> {{ med.dose }}</p>
+                    <p class="medication-detail"><strong>Observações:</strong> {{ med.observations }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p id="medicationsToday" class="no-medications">Nenhum medicamento listado para hoje.</p>
+    {% endif %}
 
-{% endblock %}
+    {% if userMeds %}
+        <div id="allMedications" class="medications-list" style="display:none;">
+            {% for med in userMeds %}
+                <div class="medication-card">
+                    <p class="medication-name">{{ med.name }}</p>
+                    <p class="medication-detail"><strong>Dose:</strong> {{ med.dose }}</p>
+                    <p class="medication-detail"><strong>Frequência:</strong> Cada {{ med.frequency }} horas</p>
+                    <p class="medication-detail"><strong>Início:</strong> {{ med.start_datetime|date:"d/m/Y H:i" }}</p>
+                    <p class="medication-detail"><strong>Fim:</strong> {{ med.end_date|date:"d/m/Y" }} (se aplicável)</p>
+                    <p class="medication-detail"><strong>Próxima Dose:</strong> {{ med.next_dose_datetime|date:"d/m/Y H:i" }}</p>
+                    <p class="medication-detail"><strong>Observações:</strong> {{ med.observations }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p id="allMedications" class="no-medications" style="display:none;">Nenhum medicamento listado.</p>
+    {% endif %}
+</div>
 
-{% block script %}
-    <!-- Dentro dessa tag abaixo pode ir qualquer código react -->
-    <script type="text/babel"></script>
+<script>
+    document.getElementById('toggleMedications').addEventListener('change', function() {
+        var medicationsToday = document.getElementById('medicationsToday');
+        var allMedications = document.getElementById('allMedications');
+        if (this.checked) {
+            allMedications.style.display = 'block';
+            medicationsToday.style.display = 'none';
+        } else {
+            allMedications.style.display = 'none';
+            medicationsToday.style.display = 'block';
+        }
+    });
+</script>
+
 {% endblock %}

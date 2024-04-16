@@ -83,9 +83,10 @@ def index(request):
         )
 
         userMedsForToday = [med for med in userMeds if med.next_dose_datetime.date() == brazilTime.date()]
-
+        
         return render(request, "main_app/index.html", {
-            'userMedsForToday': userMedsForToday
+            'userMedsForToday': userMedsForToday,
+            'userMeds': userMeds
         })
     else:
         return HttpResponseRedirect(reverse("login"))

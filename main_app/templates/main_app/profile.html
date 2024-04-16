@@ -1,21 +1,33 @@
-{% extends "main_app/layout.html" %}
-{% load static %}
+{% extends "main_app/layout.html" %} {% load static %} {% block body %}  {% if exists %} 
+<link rel="stylesheet" href="{% static 'main_app/css/profile.css' %}?v=1" />
 
-{% block body %}
-    {% if exists %}
-    <div id="user-info">
-        <h3>{{ user.username }}</h3>
-        <p>{{ user.email }}</p>
-        <p>{{ user.whatsapp_number }}</p>
-    </div>
+<div class="general-container">
+    <section class="container grid grid-template-columns">
+        <div class="item">
+            <div id="profile_image"></div>
+        </div>
+        
+        <div class="item">
+            <h1 class="title">Informações pessoais</h1>
+            <p class="label">Nome de usuário:</p>
+            <p class="info" id="name">{{ user.username }}</p>
+            <p class="label">Número de WhatsApp: </p>
+            <p class="info">{{ user.whatsapp_number }}</p>
+            <p class="label">E-mail: </p>
+            <p class="info">{{ user.email }}</p>
+        </div>
+    </section>
+</div>
 
-    
-    {% else %}
-    <h3>Esse usuário não existe.</h3>
-    {% endif %}
-
-{% endblock %}
-
-{% block script %}
-<script src=""></script>
+{% endif %} {% endblock %} {% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var name = $('#name').text().split(' ');
+        var firstName = name[0];
+        var lastName = name[name.length - 1]
+        var initials = firstName.charAt(0).toUpperCase() + " " + lastName === undefined ? '' : lastName.charAt(0).toUpperCase();
+        $('#profile_image').text(initials)
+    })
+</script>
 {% endblock %}

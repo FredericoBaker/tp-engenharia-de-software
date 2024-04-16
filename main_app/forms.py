@@ -23,7 +23,6 @@ class CustomUserCreationForm(UserCreationForm):
 
         if not pattern.match(whatsappNumber) or len(whatsappDigits) != 11:
             raise ValidationError('Número não está no formato correto. Por favor digite um número com 10 digitos incluindo o DDD, assim como está cadastrado no WhatsApp. Use o formato a seguir: (99) 9999-9999')
-        
 
         return whatsappDigits
     
@@ -41,7 +40,7 @@ class CustomMedicationCreationForm(forms.ModelForm):
         help_text='Nome do medicamento que será utilizado no tratamento.',
         widget=forms.TextInput(
             attrs={
-                'placeholder': 'Nome do medicamento',
+                'placeholder': 'Qual é o nome do medicamento que será utilizado no tratamento?',
                 'title': 'Qual é o nome do medicamento que será utilizado no tratamento?',
             }
         )
@@ -56,6 +55,7 @@ class CustomMedicationCreationForm(forms.ModelForm):
             attrs={
                 'step': '1',
                 'title': 'De quantos em quantos minutos o medicamento deve ser administrado?',
+                'Placeholder': 'De quantos em quantos minutos o medicamento deve ser administrado?',
             }
         )
     )
@@ -117,7 +117,7 @@ class CustomMedicationCreationForm(forms.ModelForm):
             attrs={
                 'rows': 5,
                 'maxlength': 500,
-                'placeholder': 'Alguma informação a mais que gostaria de adicionar para ser lembrado?',
+                'placeholder': 'Alguma informação que gostaria de adicionar para ser lembrado?',
                 'title': 'Adicione qualquer informação que julgar importante sobre o tratamento para ser lembrado.',
             }
         )
