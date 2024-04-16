@@ -19,11 +19,10 @@ class CustomUserCreationForm(UserCreationForm):
         whatsappNumber = self.cleaned_data.get('whatsapp_number')
         whatsappDigits = re.sub(r'[^\d]', '', whatsappNumber)
         
-        pattern = re.compile(r'^\(?\d{2}\)? ?\d{5}-?\d{4}$')
+        pattern = re.compile(r'^\(?\d{2}\)? ?\d{4}-?\d{4}$')
 
         if not pattern.match(whatsappNumber) or len(whatsappDigits) != 11:
-            raise ValidationError('Por favor, digite um número no formato (XX) XXXXX-XXXX')
-        
+            raise ValidationError('Número não está no formato correto. Por favor digite um número com 10 digitos incluindo o DDD, assim como está cadastrado no WhatsApp. Use o formato a seguir: (99) 9999-9999')
 
         return whatsappDigits
     
@@ -47,16 +46,16 @@ class CustomMedicationCreationForm(forms.ModelForm):
         )
     )
 
-    frequency = forms.FloatField(
-        label='Frequência (horas)', 
-        min_value=0.5, 
+    frequency = forms.IntegerField(
+        label='Frequência (minutos)', 
+        min_value=1, 
         required=True, 
-        help_text='Quantidade de horas entre as dosagens.',
+        help_text='Quantidade de minutos entre as dosagens.',
         widget=forms.NumberInput(
             attrs={
-                'step': '0.5',
-                'title': 'De quantas em quantas horas o medicamento deve ser administrado?',
-                'Placeholder': 'De quantas em quantas horas o medicamento deve ser administrado?',
+                'step': '1',
+                'title': 'De quantos em quantos minutos o medicamento deve ser administrado?',
+                'Placeholder': 'De quantos em quantos minutos o medicamento deve ser administrado?',
             }
         )
     )

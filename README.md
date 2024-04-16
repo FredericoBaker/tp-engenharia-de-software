@@ -18,21 +18,34 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
 
 ## 👥 Como rodar?
 
+- Crie e ative um ambiente virtual:
+  
+  ```sh
+  $ python -m venv venv
+  $ source venv/bin/activate
+
 - Instale as dependencias:
   
   ```sh
   $ pip install -r requirements.txt
+
+- Configure as variáveis de ambiente:
+  
+  Copie o arquivo `.env.example` para um novo arquivo chamado `.env` e atualize-o com as suas configurações locais.
   
 - Faça a migração:
   
   ```sh
-  python3 manage.py makemigrations
-  python3 manage.py migrate
+  $ python3 manage.py makemigrations
+  $ python3 manage.py migrate
   
-- Depois rode o servidor:
+- Depois rode o servidor e as tarefas cron:
+
+  Para isso você pode utilizar o script `start_dev.sh`. Certifique-se de que o script tenha permissão de execução:
   
   ```sh
-  python3 manage.py runserver
+  $ chmod +x start_dev.sh
+  $ ./start_dev.sh
 
 ## 🛠 Tecnologias
 
@@ -43,11 +56,11 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
 
 ## 📜 Backlog do Produto
 
-1. Como usuário, eu gostaria de criar um cadastro para mim x
-2. Como usuário, eu gostaria de fazer login e logout x
-3. Como usuário, eu gostaria de adicionar um remédio x
-4. Como usuário, eu gostaria de receber uma notificação de quando devo tomar o remédio x
-5. Como usuário, eu gostaria de ver os remédios que tenho para tomar hoje x-
+1. Como usuário, eu gostaria de criar um cadastro para mim
+2. Como usuário, eu gostaria de fazer login e logout
+3. Como usuário, eu gostaria de adicionar um remédio
+4. Como usuário, eu gostaria de receber uma notificação de quando devo tomar o remédio
+5. Como usuário, eu gostaria de ver os remédios que tenho para tomar hoje
 6. Como usuário, eu gostaria de informar que um remédio foi tomado
 7. Como usuário, eu gostaria de receber uma notificação quando o meu remédio estiver esgotando
 8. Como usuário, eu gostaria de ver em um calendário a minha regularidade nos tratamentos
@@ -65,45 +78,45 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
     - [X] Criar campo de nome de usuário
     - [X] Criar campo de número de whatsapp
     - [X] Criar campo botão de confirmação
-  - [ ] Criar o modelo no banco de dados [Responsável: Daniel]
-    - [ ] Criar campo de email
-    - [ ] Criar campo de senha
-    - [ ] Criar campo de nome de usuário
-    - [ ] Criar campo de número de whatsapp
-  - [ ] Criar a view da tela de cadastro [Responsável: Daniel]
-  - [ ] Criar endpoint de post para criar o cadastro do usuário [Responsável: Daniel]
+  - [X] Criar o modelo no banco de dados [Responsável: Daniel]
+    - [X] Criar campo de email
+    - [X] Criar campo de senha
+    - [X] Criar campo de nome de usuário
+    - [X] Criar campo de número de whatsapp
+  - [X] Criar a view da tela de cadastro [Responsável: Daniel]
+  - [X] Criar endpoint de post para criar o cadastro do usuário [Responsável: Daniel]
 
 ### História #2: Como usuário, eu gostaria de fazer login e logout
 - **Tarefas e responsáveis:**
   - [ ] Criar tela de login [Responsável: Wallace]
-    - [ ] Criar campo de nome de usuário
-    - [ ] Criar campo de número de whatsapp
-    - [ ] Criar campo botão de logout
-  - [ ] Criar tela de perfil de usuário [Responsável: Wallace]
-    - [ ] Criar campo botão de confirmação  
-  - [ ] Criar a view da tela de cadastro [Responsável: Daniel]
-  - [ ] Criar endpoint de post para login [Responsável: Daniel]
+    - [X] Criar campo de nome de usuário
+    - [X] Criar campo de número de whatsapp
+    - [X] Criar campo botão de logout
+  - [X] Criar tela de perfil de usuário [Responsável: Wallace]
+    - [X] Criar campo botão de confirmação  
+  - [X] Criar a view da tela de cadastro [Responsável: Daniel]
+  - [X] Criar endpoint de post para login [Responsável: Daniel]
 
 ### História #3: Como usuário, eu gostaria de adicionar um remédio
 - **Tarefas e responsáveis:**
-  - [ ] Criar tela de cadastro de remédio [Responsável: Igor]
-    - [ ] Criar campo de nome de remédio
-    - [ ] Criar campo de freqência para tomar remédio
-    - [ ] Criar campo de hora para tomar remédio
-    - [ ] Criar campo de dose para tomar do remédio
-    - [ ] Criar campo de data de início de tratamento com remédio
-    - [ ] Criar campo de data de fim de tratamento com remédio
-    - [ ] Criar campo botão de confirmação
-  - [ ] Criar a modelo de remédio [Responsável: Daniel]
-  - [ ] Criar a view da tela de cadastro de remédio [Responsável: Daniel]
-  - [ ] Criar endpoint de post para cadastro de remédio [Responsável: Daniel]
+  - [X] Criar tela de cadastro de remédio [Responsável: Igor]
+    - [X] Criar campo de nome de remédio
+    - [X] Criar campo de freqência para tomar remédio
+    - [X] Criar campo de hora para tomar remédio
+    - [X] Criar campo de dose para tomar do remédio
+    - [X] Criar campo de data de início de tratamento com remédio
+    - [X] Criar campo de data de fim de tratamento com remédio
+    - [X] Criar campo botão de confirmação
+  - [X] Criar a modelo de remédio [Responsável: Daniel]
+  - [X] Criar a view da tela de cadastro de remédio [Responsável: Daniel]
+  - [X] Criar endpoint de post para cadastro de remédio [Responsável: Daniel]
 
 ### História #4: Como usuário, eu gostaria de receber uma notificação de quando devo tomar o remédio
 - **Tarefas e responsáveis:**
-  - [ ] Criar a modelo de notificação de remédio [Responsável: Fred]
-  - [ ] Conectar com API de notificação [Responsável: Fred]
-  - [ ] Criar serviço para monitorar notificações que precisam ser enviadas [Responsável: Fred]
-  - [ ] Criar serviço para enviar notificação [Responsável: Fred]
+  - [x] Criar a modelo de notificação de remédio [Responsável: Fred]
+  - [x] Conectar com API de notificação [Responsável: Fred]
+  - [X] Criar serviço para monitorar notificações que precisam ser enviadas [Responsável: Fred]
+  - [x] Criar serviço para enviar notificação [Responsável: Fred]
 
 ### História #5: Como usuário, eu gostaria de ver os remédios que tenho para tomar hoje
 - **Tarefas e responsáveis:**
@@ -111,3 +124,18 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
   - [ ] Criar a view da tela de remédios diários [Responsável: Rubia]
 
 - [X] -> Símbolo de tarefa concluída
+
+
+## 📊 UMLS
+
+### Diagrama de Atividades
+
+Diagrama que demonstra o processo de login
+
+![DiagramaAtividades](umls/DiagramaAtividades.png)
+
+### Diagrama de Sequências
+
+Diagrama com as chamadas para cadastro de um remédio
+
+![DiagramaSequencia](umls/DiagramaSequencia.png)

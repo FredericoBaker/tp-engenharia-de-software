@@ -1,2 +1,7 @@
 django
+twilio
+Werkzeug
+django-cron
+python-dotenv
+django-extensions
 django-livereload-server
