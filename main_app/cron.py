@@ -13,8 +13,8 @@ class MedicationReminderCronJob(CronJobBase):
 
     def do(self):
         medications = Medication.objects.all()
+        now = timezone.now() - timedelta(hours=3)
         for med in medications:
-            now = timezone.now()
             if now >= med.next_dose_datetime:
                 self.send_reminder(med)
                 med.update_next_dose_datetime()

@@ -27,7 +27,8 @@ class Medication(models.Model):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.update_next_dose_datetime()
+        if not self.next_dose_datetime:
+            self.update_next_dose_datetime()
     
     def update_next_dose_datetime(self):
         brazilTime = timezone.now() - timedelta(hours=3)

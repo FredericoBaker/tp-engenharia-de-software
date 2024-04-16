@@ -99,7 +99,7 @@ def send_whatsapp_message(phone, content):
     )
 
 def build_message(user, form_instance):
-    proxima_dose = form_instance.start_datetime + timedelta(hours=form_instance.frequency)
+    proxima_dose = form_instance.start_datetime + timedelta(minutes=form_instance.frequency)
     message = (
         f"*Nova medicação adicionada!* 📝\n\n"
         f"Olá, *{user.username}*!\n\n"
