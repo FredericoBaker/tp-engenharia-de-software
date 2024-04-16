@@ -40,9 +40,8 @@
                 <div class="medication-card">
                     <p class="medication-name">{{ med.name }}</p>
                     <p class="medication-detail"><strong>Dose:</strong> {{ med.dose }}</p>
-                    <p class="medication-detail"><strong>Frequência:</strong> Cada {{ med.frequency }} horas</p>
+                    <p class="medication-detail"><strong>Frequência:</strong> A cada {{ med.frequency }} minutos</p>
                     <p class="medication-detail"><strong>Início:</strong> {{ med.start_datetime|date:"d/m/Y H:i" }}</p>
-                    <p class="medication-detail"><strong>Fim:</strong> {{ med.end_date|date:"d/m/Y" }} (se aplicável)</p>
                     <p class="medication-detail"><strong>Próxima Dose:</strong> {{ med.next_dose_datetime|date:"d/m/Y H:i" }}</p>
                     <p class="medication-detail"><strong>Observações:</strong> {{ med.observations }}</p>
                 </div>

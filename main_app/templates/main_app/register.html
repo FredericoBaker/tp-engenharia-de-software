@@ -47,4 +47,32 @@
   </form>
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const input = document.getElementById('id_whatsapp_number');
+  
+      input.addEventListener('input', function() {
+          var value = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+          if (value.length > 11) {
+              value = value.substring(0, 11); // Limita o valor a 11 dígitos
+          }
+          var formatted = '';
+          if (value.length > 2) {
+              formatted = '(' + value.substring(0,2) + ') ';
+              if (value.length === 11) { // Formatação para 9 dígitos após o DDD
+                  formatted += value.substring(2,7) + '-' + value.substring(7);
+              } else if (value.length === 10) { // Formatação para 8 dígitos após o DDD
+                  formatted += value.substring(2,6) + '-' + value.substring(6);
+              } else {
+                  formatted += value.substring(2);
+              }
+          } else {
+              formatted = value;
+          }
+          input.value = formatted; // Atualiza o campo com o valor formatado
+      });
+  });
+</script>
+  
+
 {% endblock %}

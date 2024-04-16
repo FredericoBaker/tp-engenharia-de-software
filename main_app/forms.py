@@ -16,15 +16,15 @@ class CustomUserCreationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + ('email', 'whatsapp_number',)
 
     def clean_whatsapp_number(self):
-        whatsappNumber = self.cleaned_data.get('whatsapp_number')
-        whatsappDigits = re.sub(r'[^\d]', '', whatsappNumber)
-        
-        pattern = re.compile(r'^\(?\d{2}\)? ?\d{4}-?\d{4}$')
+        whatsapp_number = self.cleaned_data.get('whatsapp_number')
+        whatsapp_digits = re.sub(r'[^\d]', '', whatsapp_number)
 
-        if not pattern.match(whatsappNumber) or len(whatsappDigits) != 11:
-            raise ValidationError('Número não está no formato correto. Por favor digite um número com 10 digitos incluindo o DDD, assim como está cadastrado no WhatsApp. Use o formato a seguir: (99) 9999-9999')
+        if len(whatsapp_digits) not in [10, 11]:
+            raise ValidationError('Número não está no formato correto. Por favor digite um número com 10 ou 11 dígitos incluindo o DDD.')
 
-        return whatsappDigits
+        return whatsapp_digits
+
+
     
 class CustomAuthenticationForm(AuthenticationForm):
     error_messages = {
