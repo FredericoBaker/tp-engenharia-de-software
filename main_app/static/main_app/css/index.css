@@ -33,7 +33,7 @@ body {
 }
 
 .medication-card {
-    max-width: 600px;
+    width: 25rem;
     background-color: #FEFEFE;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -60,9 +60,11 @@ body {
 }
 
 .header {
-    align-items: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    padding: 20px;
+    padding: 0rem 30% 2rem 30%;
     box-sizing: border-box;
 }
 
