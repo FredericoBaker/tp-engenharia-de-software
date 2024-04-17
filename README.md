@@ -51,7 +51,7 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
 
 - Python
 - Django
-- React
+- HTML/CSS
 - SQLite
 
 ## 📜 Backlog do Produto
