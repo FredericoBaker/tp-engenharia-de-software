@@ -88,7 +88,7 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
 
 ### História #2: Como usuário, eu gostaria de fazer login e logout
 - **Tarefas e responsáveis:**
-  - [ ] Criar tela de login [Responsável: Wallace]
+  - [x] Criar tela de login [Responsável: Wallace]
     - [X] Criar campo de nome de usuário
     - [X] Criar campo de número de whatsapp
     - [X] Criar campo botão de logout
@@ -120,8 +120,8 @@ O aplicativo de gestão de medicação visa facilitar o acompanhamento de tratam
 
 ### História #5: Como usuário, eu gostaria de ver os remédios que tenho para tomar hoje
 - **Tarefas e responsáveis:**
-  - [ ] Criar tela de remédios do dia [Responsável: Rubia]
-  - [ ] Criar a view da tela de remédios diários [Responsável: Rubia]
+  - [x] Criar tela de remédios do dia [Responsável: Rubia]
+  - [x] Criar a view da tela de remédios diários [Responsável: Rubia]
 
 - [X] -> Símbolo de tarefa concluída
 
